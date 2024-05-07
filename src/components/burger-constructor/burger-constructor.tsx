@@ -1,24 +1,50 @@
-import { FC, useMemo } from 'react';
-import { TConstructorIngredient } from '@utils-types';
+import { FC, useEffect, useMemo } from 'react';
+import { RequestStatus, TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  burgerActions,
+  burgerSelectors
+} from '../../services/slices/burgerConstructor';
+import { useNavigate } from 'react-router-dom';
+import { AppDispatch } from '../../services/store';
+import {
+  orderActions,
+  orderBurger,
+  orderSelectors
+} from '../../services/slices/order';
+import { userSelectors } from '../../services/slices/user';
 
 export const BurgerConstructor: FC = () => {
   /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-  const constructorItems = {
-    bun: {
-      price: 0
-    },
-    ingredients: []
-  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const orderStatus = useSelector(orderSelectors.selectStatus);
+  const user = useSelector(userSelectors.selectUser);
 
-  const orderRequest = false;
+  const constructorItems = useSelector(burgerSelectors.selectBurger);
 
-  const orderModalData = null;
+  const orderRequest = orderStatus === RequestStatus.Loading ? true : false;
 
-  const onOrderClick = () => {
+  const orderModalData = useSelector(orderSelectors.selectInfo);
+
+  const onOrderClick = async () => {
     if (!constructorItems.bun || orderRequest) return;
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    const orderData: string[] = [];
+    if (constructorItems.bun) {
+      orderData.push(constructorItems.bun._id);
+    }
+    constructorItems.ingredients.map((item) => orderData.push(item._id));
+    await dispatch(orderBurger(orderData));
+    dispatch(burgerActions.resetConstructor());
   };
-  const closeOrderModal = () => {};
+  const closeOrderModal = () => {
+    dispatch(orderActions.resetOrder());
+  };
 
   const price = useMemo(
     () =>
@@ -29,8 +55,6 @@ export const BurgerConstructor: FC = () => {
       ),
     [constructorItems]
   );
-
-  return null;
 
   return (
     <BurgerConstructorUI
