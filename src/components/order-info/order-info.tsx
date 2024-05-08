@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../services/store';
 import { ingredientsSelectors } from '../../services/slices/ingredients';
 import { feedSelectors } from '../../services/slices/feed';
 import { useParams } from 'react-router-dom';
@@ -14,9 +14,7 @@ export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
   const orderData = feeds.find((x) => x.number.toString() === number);
 
-  const ingredients: TIngredient[] = useSelector(
-    ingredientsSelectors.selectIngredients
-  );
+  const ingredients = useSelector(ingredientsSelectors.selectIngredients);
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {

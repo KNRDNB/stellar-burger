@@ -5,7 +5,8 @@ import {
   loginUserApi,
   logoutApi,
   registerUserApi,
-  updateUserApi
+  updateUserApi,
+  refreshToken
 } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RequestStatus, TUser } from '@utils-types';
@@ -88,6 +89,15 @@ export const userSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
         state.data = null;
+      })
+      .addCase(refreshUserToken.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
+      })
+      .addCase(refreshUserToken.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
+      .addCase(refreshUserToken.fulfilled, (state, action) => {
+        state.requestStatus = RequestStatus.Success;
       });
   }
 });
@@ -95,6 +105,11 @@ export const userSlice = createSlice({
 export const checkUserAuth = createAsyncThunk(
   `${sliceName}/checkUserAuth`,
   async () => await getUserApi()
+);
+
+export const refreshUserToken = createAsyncThunk(
+  `${sliceName}/refreshUserToken`,
+  async () => await refreshToken()
 );
 
 export const loginUser = createAsyncThunk(
