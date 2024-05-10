@@ -49,12 +49,10 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getIngredients());
-    dispatch(getFeeds());
   }, [dispatch]);
 
   useEffect(() => {
     dispatch(checkUserAuth()).finally(() => dispatch(userActions.authCheck()));
-    dispatch(getOrders());
   }, [dispatch, userActions.authCheck()]);
 
   const handleModalClose = () => navigate(-1);
