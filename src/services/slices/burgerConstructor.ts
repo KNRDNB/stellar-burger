@@ -52,3 +52,4 @@ export const burgerSlice = createSlice({
 
 export const burgerSelectors = burgerSlice.selectors;
 export const burgerActions = burgerSlice.actions;
+export const burgerReducer = burgerSlice.reducer;

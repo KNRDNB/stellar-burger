@@ -47,3 +47,4 @@ export const orderBurger = createAsyncThunk(
 );
 export const orderSelectors = orderSlice.selectors;
 export const orderActions = orderSlice.actions;
+export const orderReducer = orderSlice.reducer;

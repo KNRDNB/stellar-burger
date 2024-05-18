@@ -43,3 +43,4 @@ export const getOrders = createAsyncThunk(
 
 export const ordersSelectors = ordersSlice.selectors;
 export const ordersActions = ordersSlice.actions;
+export const ordersReducer = ordersSlice.reducer;

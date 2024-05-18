@@ -51,3 +51,4 @@ export const getFeeds = createAsyncThunk(
 
 export const feedSelectors = feedSlice.selectors;
 export const feedActions = feedSlice.actions;
+export const feedReducer = feedSlice.reducer;

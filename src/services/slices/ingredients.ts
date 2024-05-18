@@ -44,3 +44,4 @@ export const getIngredients = createAsyncThunk(
 
 export const ingredientsSelectors = ingredientsSlice.selectors;
 export const ingredientsActions = ingredientsSlice.actions;
+export const ingredientsReducer = ingredientsSlice.reducer;
