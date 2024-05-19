@@ -20,7 +20,7 @@ export interface TUserState {
   requestStatus: RequestStatus;
 }
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isAuthChecked: false,
   data: null,
   requestStatus: RequestStatus.Idle
@@ -148,9 +148,10 @@ export const logoutUser = createAsyncThunk(
       deleteCookie('accessToken');
       localStorage.removeItem('refreshToken');
     }
-    return;
+    return data;
   }
 );
 
 export const userSelectors = userSlice.selectors;
 export const userActions = userSlice.actions;
+export const userReducer = userSlice.reducer;

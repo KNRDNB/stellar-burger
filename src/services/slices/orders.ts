@@ -9,7 +9,7 @@ export interface TOrdersState {
   requestStatus: RequestStatus;
 }
 
-const initialState: TOrdersState = {
+export const initialState: TOrdersState = {
   orders: [],
   requestStatus: RequestStatus.Idle
 };
@@ -43,3 +43,4 @@ export const getOrders = createAsyncThunk(
 
 export const ordersSelectors = ordersSlice.selectors;
 export const ordersActions = ordersSlice.actions;
+export const ordersReducer = ordersSlice.reducer;

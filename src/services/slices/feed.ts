@@ -11,7 +11,7 @@ export interface TFeedState {
   requestStatus: RequestStatus;
 }
 
-const initialState: TFeedState = {
+export const initialState: TFeedState = {
   orders: [],
   total: 0,
   totalToday: 0,
@@ -51,3 +51,4 @@ export const getFeeds = createAsyncThunk(
 
 export const feedSelectors = feedSlice.selectors;
 export const feedActions = feedSlice.actions;
+export const feedReducer = feedSlice.reducer;
