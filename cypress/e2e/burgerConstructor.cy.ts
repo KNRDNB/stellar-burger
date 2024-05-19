@@ -3,7 +3,7 @@ describe('Тест добавления ингредиентов в констр
     cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
     cy.intercept('GET', 'api/auth/user', { fixture: 'login.json' });
     cy.viewport(1920,1080);
-    cy.visit('http://localhost:4000')
+    cy.visit('');
   });
   it('Добавление булки',()=>{
     cy.get('[data-cy=buns-category]').contains('Добавить').click();
@@ -25,7 +25,7 @@ describe('Тест модального окна ингредиента', () => 
     cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
     cy.intercept('GET', 'api/auth/user', { fixture: 'login.json' });
     cy.viewport(1920,1080);
-    cy.visit('http://localhost:4000')
+    cy.visit('');
   });
   it('Открытие модального окна ингредиента',()=>{
     cy.contains('Ингредиент 1 (Булка)').click();
@@ -50,7 +50,7 @@ describe('Тест создания заказа', () => {
     window.localStorage.setItem('refreshToken', 'testRefreshToken');
     cy.setCookie('accessToken', 'testAccessToken');
     cy.viewport(1920,1080);
-    cy.visit('http://localhost:4000')
+    cy.visit('');
   });
   afterEach(()=>{
     cy.clearCookies();

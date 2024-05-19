@@ -1,11 +1,7 @@
 import { RequestStatus } from '../../../utils/types';
-import { TOrdersState, getOrders, ordersReducer } from '../orders';
+import { getOrders, initialState, ordersReducer } from '../orders';
 
 describe('Тесты слайса orders', () => {
-  const initialState: TOrdersState = {
-    orders: [],
-    requestStatus: RequestStatus.Idle
-  };
   const testOrders = [
     {
       ingredients: [],

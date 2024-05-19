@@ -1,13 +1,7 @@
 import { RequestStatus } from '../../../utils/types';
-import { TFeedState, feedReducer, getFeeds } from '../feed';
+import { feedReducer, getFeeds, initialState } from '../feed';
 
 describe('Тесты слайса feed', () => {
-  const initialState: TFeedState = {
-    orders: [],
-    total: 0,
-    totalToday: 0,
-    requestStatus: RequestStatus.Idle
-  };
   const testFeed = {
     orders: [
       {

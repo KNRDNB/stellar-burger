@@ -2,14 +2,11 @@ import { TIngredient } from '../../../utils/types';
 import {
   TBurgerState,
   burgerActions,
-  burgerReducer
+  burgerReducer,
+  initialState
 } from '../burgerConstructor';
 
 describe('Тесты слайса burgerConstructor', () => {
-  const initialState: TBurgerState = {
-    bun: null,
-    ingredients: []
-  };
   const bunIngredient: TIngredient = {
     _id: '1',
     name: 'Ингредиент 1 (Булка)',

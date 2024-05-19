@@ -1,18 +1,13 @@
 import { RequestStatus } from '../../../utils/types';
 import {
   TOrderState,
+  initialState,
   orderActions,
   orderBurger,
-  orderReducer,
-  orderSelectors
+  orderReducer
 } from '../order';
 
 describe('Тесты слайса order', () => {
-  const initialState: TOrderState = {
-    info: null,
-    requestStatus: RequestStatus.Idle
-  };
-
   const testState: TOrderState = {
     info: {
       ingredients: [],

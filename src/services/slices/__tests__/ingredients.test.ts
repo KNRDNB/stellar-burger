@@ -1,15 +1,11 @@
 import { RequestStatus, TIngredient } from '../../../utils/types';
 import {
-  TIngredientsState,
   getIngredients,
-  ingredientsReducer
+  ingredientsReducer,
+  initialState
 } from '../ingredients';
 
 describe('Тесты слайса ingredients', () => {
-  const initialState: TIngredientsState = {
-    ingredients: [],
-    requestStatus: RequestStatus.Idle
-  };
   const testIngredients: TIngredient[] = [
     {
       _id: '1',

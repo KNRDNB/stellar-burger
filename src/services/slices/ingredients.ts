@@ -9,7 +9,7 @@ export interface TIngredientsState {
   requestStatus: RequestStatus;
 }
 
-const initialState: TIngredientsState = {
+export const initialState: TIngredientsState = {
   ingredients: [],
   requestStatus: RequestStatus.Idle
 };

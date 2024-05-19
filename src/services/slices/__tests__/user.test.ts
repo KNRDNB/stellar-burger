@@ -1,8 +1,8 @@
 import { TLoginData, TRegisterData } from '../../../utils/burger-api';
 import { RequestStatus, TUser } from '../../../utils/types';
 import {
-  TUserState,
   checkUserAuth,
+  initialState,
   loginUser,
   logoutUser,
   refreshUserToken,
@@ -13,12 +13,6 @@ import {
 } from '../user';
 
 describe('Тесты слайса user', () => {
-  const initialState: TUserState = {
-    isAuthChecked: false,
-    data: null,
-    requestStatus: RequestStatus.Idle
-  };
-
   const testUser = {
     user: { email: 'string@a.ru', name: 'Alex' },
     success: true
